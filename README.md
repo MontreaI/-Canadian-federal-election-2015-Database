@@ -6,7 +6,7 @@ SQl Server database used to store data relating to the 2015 federal election.
 
 ## Database Schema
 
-TABLE SCHEMA
+**TABLE SCHEMA**
 
  - Province = {**provinceName**, provincePopulation, provinceGDP}
 
@@ -49,7 +49,7 @@ TABLE SCHEMA
 
 ## View
 
-** THE VIEW CONTAINS THE FOLLOWING ATTRIBUTES **
+**THE VIEW CONTAINS THE FOLLOWING ATTRIBUTES**
 
  - ridingName
 
@@ -64,3 +64,13 @@ TABLE SCHEMA
  - totalVotes (the total number of votes cast in the riding)
 
 ## Data
+
+**THE DATA WAS TAKEN FROM THE FOLLOWING WEBSITES:**
+
+[Political parties](http://www.sfu.ca/~aheard/elections/parties.html)
+
+[Province population](http://www5.statcan.gc.ca/cansim/a26?lang=eng&id=510005)
+
+[Province GDP](http://www.statcan.gc.ca/tables-tableaux/sum-som/l01/cst01/econ15-eng.htm)
+
+[Riding population](https://en.wikipedia.org/wiki/Population_of_Canadian_federal_ridings)
