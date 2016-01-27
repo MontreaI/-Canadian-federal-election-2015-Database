@@ -6,7 +6,7 @@ SQl Server database used to store data relating to the 2015 federal election.
 
 ## Database Schema
 
-**TABLE SCHEMA**
+**TABLE SCHEMA:**
 
  - Province = {**provinceName**, provincePopulation, provinceGDP}
 
@@ -49,7 +49,7 @@ SQl Server database used to store data relating to the 2015 federal election.
 
 ## View
 
-**THE VIEW CONTAINS THE FOLLOWING ATTRIBUTES**
+**THE VIEW CONTAINS THE FOLLOWING ATTRIBUTES:**
 
  - ridingName
 
