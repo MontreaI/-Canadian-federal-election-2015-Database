@@ -1,0 +1,45 @@
+CREATE TABLE Province (
+	provinceName	VARCHAR(255),
+	provincePopulation INTEGER,
+	provinceGDP REAL, 
+	PRIMARY KEY(provinceName)
+)
+GO
+
+CREATE TABLE Riding (
+	ridingName VARCHAR(255),
+	ridingPopulation INTEGER,
+	provinceName VARCHAR(255),
+	PRIMARY KEY(ridingName),
+	FOREIGN KEY(provinceName) REFERENCES Province ON DELETE NO ACTION ON UPDATE NO ACTION
+)
+GO
+
+CREATE TABLE Party (
+	partyID VARCHAR(255),
+	partyName VARCHAR(255),
+	leaderFirstName VARCHAR(255) NOT NULL,
+	leaderLastName VARCHAR(255) NOT NULL,
+	partyWeb VARCHAR(255),
+	PRIMARY KEY(partyID),
+)
+GO
+
+CREATE TABLE Ballots (
+	ridingName VARCHAR(255),
+	candidateFirstName VARCHAR(255),
+	candidateLastName VARCHAR(255),
+	partyID VARCHAR(255) NOT NULL,
+	votes INTEGER NOT NULL,
+	PRIMARY KEY(ridingName, candidateFirstName, candidateLastName),
+	FOREIGN KEY(ridingName) REFERENCES Riding ON DELETE NO ACTION ON UPDATE CASCADE,
+	FOREIGN KEY(partyID) REFERENCES Party ON DELETE NO ACTION ON UPDATE CASCADE,
+	UNIQUE(candidateFirstName, candidateLastName, partyID),
+	CONSTRAINT votes_greater_zero CHECK(votes>=0),
+)
+GO
+
+
+CREATE UNIQUE NONCLUSTERED INDEX idx_yourcolumn_notnull
+ON Party(partyWeb)
+WHERE partyWeb IS NOT NULL;

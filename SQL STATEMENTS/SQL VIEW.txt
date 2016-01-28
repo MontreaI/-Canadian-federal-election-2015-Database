@@ -1,0 +1,9 @@
+CREATE VIEW CMPT354_VIEW
+AS 
+SELECT B.ridingName, B.candidateFirstName AS mpFirstName, B.candidateLastName AS mpLastName, P.partyName AS mpParty, X.mpVotes, X.totalVotes
+FROM Ballots B, Party P,
+	(SELECT ridingName, MAX(votes) AS mpVotes, SUM(votes) AS totalVotes
+	FROM Ballots
+	GROUP BY ridingName) X
+WHERE B.ridingName=X.ridingName AND B.partyID=P.partyID AND B.votes=X.mpVotes
+GO

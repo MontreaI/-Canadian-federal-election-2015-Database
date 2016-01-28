@@ -1,0 +1,14 @@
+CREATE TRIGGER Constraints
+ON Ballots
+AFTER INSERT, UPDATE
+AS 
+	IF EXISTS(SELECT R.ridingName
+		FROM (SELECT ridingName, SUM(votes) AS sum_votes
+				FROM Ballots
+				GROUP BY ridingName) S, Riding R
+		WHERE S.ridingName=R.ridingName AND S.sum_votes>=R.ridingPopulation)
+BEGIN
+	ROLLBACK TRANSACTION
+	RAISERROR('The sum of the votes for a riding should be less than the population of that riding',16,1)
+END
+GO
